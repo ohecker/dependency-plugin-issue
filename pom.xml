@@ -4,8 +4,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>de.jotb.playground</groupId>
-    <artifactId>maven-license-plugin-issue</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <artifactId>dependency-plugin-issue</artifactId>
+    <version>0.0.2-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <modules>
@@ -14,15 +14,8 @@
     </modules>
 
 
-    <name>maven-license-plugin-issue</name>
-    <description>Project illustrating an assumed issue with the license-maven-plugin</description>
-
-    <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.0.4.RELEASE</version>
-        <relativePath/> <!-- lookup parent from repository -->
-    </parent>
+    <name>dependency-plugin-issue</name>
+    <description>Project illustrating an assumed issue with the dependency-maven-plugin</description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -43,9 +36,9 @@
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>license-maven-plugin</artifactId>
-                    <version>1.16</version>
+                    <version>2.0.0</version>
                     <configuration>
-                        <failOnBlacklist>true</failOnBlacklist>
+<!--                        <failOnBlacklist>true</failOnBlacklist> -->
                         <includedLicenses>
                             <includedLicense>Apache License, Version 2.0</includedLicense>
                             <includedLicense>Apache License, version 2.0</includedLicense>
@@ -70,6 +63,19 @@
             </plugins>
         </pluginManagement>
     </build>
+    <repositories>
+         <repository>
+              <id>my-test-repository</id>
+              <name>Repo for test deployments</name>
+              <url>http://localhost/snapshots</url>
+         </repository>
+    </repositories>
+    <distributionManagement>
+        <snapshotRepository>
+             <id>my-test-deployment-repository</id>
+             <url>http://localhost/snapshots</url>
+        </snapshotRepository>
+    </distributionManagement>
 
 
 </project>
